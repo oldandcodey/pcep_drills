@@ -17,6 +17,15 @@ gallons_required = 5
 gallon_shortfall = gallons_required - int(gallons_on_hand)
 kit_complete = input("Is your kit complete? (y/n): ")
 
+# Day 4 Menu Loop Build
+done = 1
+
+print("1. Add Item")
+print("2. List Item")
+print("3. Quit")
+
+while (done > 0) & (done < 3):
+    done = int(input("Enter choice: "))
 
 print("NAVARRE RESILIENCE CHECK", end="\n")
 print("Prepared by", name, "on", date)
