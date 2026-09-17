@@ -21,6 +21,21 @@ kit_complete = input("Is your kit complete? (y/n): ").strip().lower()
 kit_ok = kit_complete == "y"
 fuel_ok = gallons_on_hand >= gallons_required
 
+# Day 6 Dicts, Tuples and List
+
+row = {
+    "name": "5 - gal fuel can",
+    "qty": 2,
+    "ok": "n",
+}
+
+category = (
+    "POWER",
+    "WATER",
+    "COMMS",
+    "MED",
+)
+
 # Day 4 Menu Loop Build
 # FIX: items must be a list; `item = ''` is a string and cannot collect rows
 items = []
@@ -37,13 +52,24 @@ while True:
     if done == 4:
         break
     elif done == 1:
-        items.append(input("Item to add: "))
+        #items.append(input("Item to add: "))
+        # Day 6 Create dict row and add to list 
+        name = input("Add item name: ")
+        qty = input("Add item qty: ")
+        ok = input(f"Is {name} OK? (y/n): ")
+        row = {"name":name,"qty":qty,"ok":ok}
+        items.append(row)
     elif done == 2:
         if not items:
             print("No items yet.")
         else:
-            for item in items:
-                print("-", item)
+            print(items)
+    #         for item in items:
+    #             line = ""
+    #     #                print("-", item)
+    #             for key, value in item.items():
+    #                 line = line + str({key}) + ": " + str({value}) + "    "
+    #             print(line)
     elif done == 3:
         if not items:
             print("No items to remove")
@@ -75,11 +101,11 @@ else:
         line = line + RED_BG + WHITE + " You better get on it! It's hurricane season" + RESET
 print(line)
 
-# Day 5 Additions for extra Credit
-print("Extra Credit")
-print("the last 3 items in items: ", items[-3:])
-b = sorted(items)
-print(b)
-b = items[:]
-print(b)
+# # Day 5 Additions for extra Credit
+# print("Extra Credit")
+# print("the last 3 items in items: ", items[-3:])
+# b = sorted(items)
+# print(b)
+# b = items[:]
+# print(b)
 
