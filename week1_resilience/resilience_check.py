@@ -8,8 +8,8 @@ WHITE = "\033[97m"
 BLACK = "\033[30m"
 
 print("Navarre Resilience Check Entry")
-name = input("operator name: ")
-print("Logged in as", name, sep=": ")
+user = input("operator name: ")
+print("Logged in as", user, sep=": ")
 date = input("todays date: ")
 month = int(input("what is the month (m): "))
 # FIX: convert to int at input so later math and checks are not str vs int
@@ -23,12 +23,6 @@ fuel_ok = gallons_on_hand >= gallons_required
 
 # Day 6 Dicts, Tuples and List
 
-row = {
-    "name": "5 - gal fuel can",
-    "qty": 2,
-    "ok": "n",
-}
-
 category = (
     "POWER",
     "WATER",
@@ -38,7 +32,7 @@ category = (
 
 # Day 4 Menu Loop Build
 # FIX: items must be a list; `item = ''` is a string and cannot collect rows
-items = []
+kit_items = []
 
 # FIX: `while True` + `break` on quit. The old `done = 1` flag treated 0/4 as
 # quit and never ran Add/List. Reprint the menu each pass.
@@ -55,38 +49,42 @@ while True:
         #items.append(input("Item to add: "))
         # Day 6 Create dict row and add to list 
         name = input("Add item name: ")
-        qty = input("Add item qty: ")
-        ok = input(f"Is {name} OK? (y/n): ")
+        qty = int(input("Add item qty: "))
+        ok = input(f"Is {name} OK? (y/n): ").strip().lower() == "y"
         row = {"name":name,"qty":qty,"ok":ok}
-        items.append(row)
+        kit_items.append(row)
     elif done == 2:
-        if not items:
+        if not kit_items:
             print("No items yet.")
         else:
-            print(items)
-    #         for item in items:
-    #             line = ""
-    #     #                print("-", item)
-    #             for key, value in item.items():
-    #                 line = line + str({key}) + ": " + str({value}) + "    "
-    #             print(line)
+            for kit_item in kit_items:
+                line = ""
+                for key, value in kit_item.items():
+                    line = line + key + ": " + str(value) + "  "
+                print(line)
     elif done == 3:
-        if not items:
+        if not kit_items:
             print("No items to remove")
         else:
             toRemove = int(input("Enter item to remove (x): ")) - 1
-            del items[toRemove]
+            del kit_items[toRemove]
+    elif done == 5:
+        pass
     else:
         continue  # FIX: invalid choice — skip the rest and show the menu again
 
 print("NAVARRE RESILIENCE CHECK")
-print("Prepared by", name, "on", date)
+print("Prepared by", user, "on", date)
+print(" | ".join(category))
 
 print("gallons of gas on hand ", gallons_on_hand, "Gallons Required: ", gallons_required, "Shortfall: ", gallon_shortfall)
-if items:
+if kit_items:
     print("Kit items:")
-    for item in items:
-        print("-", item)
+    for kit_item in kit_items:
+        line = ""
+        for key, value in kit_item.items():
+            line = line + key + ": " + str(value) + "  "
+        print(line)
 
 # FIX: Day 3 bands — both → green, either → yellow, neither → red
 # FIX: `and` / `or` are boolean; `&` is bitwise
@@ -102,10 +100,11 @@ else:
 print(line)
 
 # # Day 5 Additions for extra Credit
-# print("Extra Credit")
-# print("the last 3 items in items: ", items[-3:])
-# b = sorted(items)
-# print(b)
-# b = items[:]
-# print(b)
-
+recommended = ["5 Gallons Water","Handpump","Easy Prep Food","Can Opener","Butane Stove"]
+print("Extra Credit")
+print("the last 3 items in recommended : ", recommended[-3:])
+b = sorted(recommended)
+print(b)
+b = recommended[:]
+b.append("hurricane Snacks")
+print(b)

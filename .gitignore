@@ -1,0 +1,4 @@
+# Agent-maintained grades; not part of the drill.
+# Daily close-out is `git add -A` — this keeps reviews off the week1 branch.
+week1_resilience/PROGRESS.md
+week1_resilience/NOTES.md
