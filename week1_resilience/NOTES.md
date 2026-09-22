@@ -21,7 +21,9 @@ After a requested review:
 - Git close-out: `~/Projects/bpelleti/01 - Projects/PCEP Prep/Github Common commands.md`
 - This folder is the Week 1 *program* (`resilience_check.py`). Calendar weeks 1–2 of the drill both land here. `../week2_brief/` is the functions/exceptions program and starts after Day 14.
 
-## Current code (catch-up review 2026-09-18, uncommitted)
+## Current code (Day 7 quick re-check 2026-09-22, uncommitted)
+
+Catch-up commit is `d1c0eea` on `week1`. Day 7 report is in the working tree and not committed. Grade **A-** — see `PROGRESS.md`.
 
 Files:
 
@@ -35,13 +37,13 @@ What already works (after catch-up):
 - Kit y/n → `kit_ok` (separate from the item list)
 - `while True` menu: Add / List / Remove / Quit / `elif done == 5: pass`
 - `kit_items` is a list of dicts `{"name", "qty": int, "ok": bool}`
-- List and closing report walk `.items()` into a line
+- List (choice 2) walks `.items()`. Closing report is f-strings: title, `Prepared by {user} on {date}`, joined categories, fuel numbers, and one title-cased sentence per kit row (`name`, `qty`, `ok`). Legend label is lowercase `categories:`.
 - Day 3 bands: both → green, either → yellow, neither → red + hurricane-season nest
 - Extra credit: `recommended` string list with slice, `sorted`, and `[:]` clone
 
 Still open (not Day 10+ work):
 
-1. **`category` is joined on the report** (`" | ".join(category)`). Legend only. Day 10 later puts a `"category"` key on each row and checks `in category`.
+1. **Day 7 label.** Change `categories:` to `Categories:` in the header. Optional: name qty and ok in the sentence (`2 is True` already carries both values). `category` stays a legend. Day 10 later puts a `"category"` key on each row. Storing `.title()` at Add is Day 8. Then midpoint commit on `week1`. Do not merge.
 2. **Clone without alias.** Extra credit uses `recommended` (strings): slice, `sorted`, clone then `append`. Still missing `b = recommended` vs `b = recommended[:]` printed side by side after a mutate.
 3. **Remove** has no bounds check. Day 12: `if`/`continue`, not `try/except`.
 4. **ANSI is on the status sentence only.** Day 9: pad text to `WIDTH` then wrap codes.
@@ -132,4 +134,4 @@ Menu 2 (List) should use the same columns, numbered, so Remove by index matches 
 4. If they are catching up Days 1–6, they work in `resilience_check.py` only. If they called a day done, review and write `PROGRESS.md`.
 5. They commit their code: `Add Day N: ...` then `git push`. Do not stage `PROGRESS.md`.
 
-Day 7 is the next original day (strings + first formatted report). Days 8–14 are the extension. Week 2 brief builder does not start until Day 14 is merged and tagged `v0.1-week1`.
+Day 7 is ready to commit on `week1` (grade A-; capitalize the legend label if you want it tidy). Days 8–14 are the extension. Week 2 brief builder does not start until Day 14 is merged and tagged `v0.1-week1`.

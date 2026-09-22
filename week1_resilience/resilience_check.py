@@ -73,19 +73,29 @@ while True:
     else:
         continue  # FIX: invalid choice — skip the rest and show the menu again
 
-print("NAVARRE RESILIENCE CHECK")
-print("Prepared by", user, "on", date)
-print(" | ".join(category))
+# print("NAVARRE RESILIENCE CHECK")
+# print("Prepared by", user, "on", date)
+# print(" | ".join(category))
+#
 
-print("gallons of gas on hand ", gallons_on_hand, "Gallons Required: ", gallons_required, "Shortfall: ", gallon_shortfall)
+header = f"""Navarre Resilience Check Report
+Prepared by {user} on {date}
+Categories: {" | ".join(category)}"""
+print(header)
+
+print(f"Fuel on hand: {gallons_on_hand}, minimum need: {gallons_required}, Shortfall: {gallon_shortfall}")
 if kit_items:
     print("Kit items:")
     for kit_item in kit_items:
-        line = ""
-        for key, value in kit_item.items():
-            line = line + key + ": " + str(value) + "  "
-        print(line)
-
+    #     line = ""
+    #     for key, value in kit_item.items():
+    #         line = line + key + ": " + str(value) + "  "
+    #     print(line)
+    #
+        item_name = kit_item["name"].strip().title()
+        item_qty = kit_item["qty"]
+        item_ok = kit_item["ok"]
+        print(f"{item_name}, {item_qty} is {item_ok}")
 # FIX: Day 3 bands — both → green, either → yellow, neither → red
 # FIX: `and` / `or` are boolean; `&` is bitwise
 # FIX: typos seaoson → season, Its → It's
