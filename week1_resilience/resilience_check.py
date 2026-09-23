@@ -48,7 +48,7 @@ while True:
     elif done == 1:
         #items.append(input("Item to add: "))
         # Day 6 Create dict row and add to list 
-        name = input("Add item name: ")
+        name = input("Add item name: ").strip().title()
         qty = int(input("Add item qty: "))
         ok = input(f"Is {name} OK? (y/n): ").strip().lower() == "y"
         row = {"name":name,"qty":qty,"ok":ok}
@@ -92,7 +92,7 @@ if kit_items:
     #         line = line + key + ": " + str(value) + "  "
     #     print(line)
     #
-        item_name = kit_item["name"].strip().title()
+        item_name = kit_item["name"]
         item_qty = kit_item["qty"]
         item_ok = kit_item["ok"]
         print(f"{item_name}, {item_qty} is {item_ok}")
